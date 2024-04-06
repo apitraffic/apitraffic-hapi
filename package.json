@@ -1,0 +1,26 @@
+{
+  "name": "@apitraffic/hapi",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@apitraffic/utilities": "file:../apitraffic-node-utilities"
+  },
+  "devDependencies": {
+    "@hapi/hapi": "^21.3.8",
+    "axios": "^1.6.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apitraffic/apitraffic-express.git"
+  },
+  "author": "Jason Fill<jason@apitraffic.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/apitraffic/apitraffic-express/issues"
+  },
+  "homepage": "https://github.com/apitraffic/apitraffic-express#readme"
+}
