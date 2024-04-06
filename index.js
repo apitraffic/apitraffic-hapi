@@ -4,7 +4,12 @@ const package = require('./package.json');
 
 exports.plugin = {
     name: 'apiTrafficPlugin',
-    register: function (server, options = {}) {
+    register: function (server, options = {
+      interceptOutbound : true,
+      host : "",
+      token : "",
+      bucket : ""
+    }) {
       
       // Set things up...
       utilities.setup(options);
@@ -25,8 +30,6 @@ exports.plugin = {
         const fullUrl = `${protocol}://${host}${path}${query}`;
 
         const apiTrafficOptions = {
-            apiToken: process.env.API_TRAFFIC_TOKEN,
-            bucketSid: process.env.API_TRAFFIC_BUCKET_SID,
             version: package.version,
             sdk: package.name                    
         };

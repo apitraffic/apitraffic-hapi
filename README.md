@@ -11,7 +11,10 @@ const apiTraffic = require('@apitraffic/hapi');
 await server.register({
     plugin: apiTraffic,
     options: {
-        interceptOutbound: true
-    }
+          interceptOutbound: false,
+          host : "",
+          token : "",
+          bucket : ""
+        }
 });
 ```
