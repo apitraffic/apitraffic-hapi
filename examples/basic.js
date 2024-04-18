@@ -13,10 +13,11 @@ const init = async () => {
     await server.register({
         plugin: apiTraffic,
         options: {
-          interceptOutbound: false,
+          interceptOutbound: true,
           host : "",
           token : "",
-          bucket : ""
+          bucket : "",
+          debug: true
         }
       });
 

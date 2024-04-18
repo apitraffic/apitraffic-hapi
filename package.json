@@ -9,7 +9,7 @@
     "pub-major": "npm version major --force && git push origin master &&  npm publish"
   },
   "dependencies": {
-    "@apitraffic/utilities": "^0.0.1"
+    "@apitraffic/utilities": "^0.0.6"
   },
   "devDependencies": {
     "@hapi/hapi": "^21.3.8",
@@ -17,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/apitraffic/apitraffic-express.git"
+    "url": "git+https://github.com/apitraffic/apitraffic-hapi.git"
   },
   "author": "Jason Fill<jason@apitraffic.io>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/apitraffic/apitraffic-express/issues"
+    "url": "https://github.com/apitraffic/apitraffic-hapi/issues"
   },
-  "homepage": "https://github.com/apitraffic/apitraffic-express#readme"
+  "homepage": "https://github.com/apitraffic/apitraffic-hapi#readme"
 }

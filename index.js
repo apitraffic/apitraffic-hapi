@@ -6,9 +6,10 @@ exports.plugin = {
     name: 'apiTrafficPlugin',
     register: function (server, options = {
       interceptOutbound : true,
-      host : "",
+      host : "ingest.apitraffic.io",
       token : "",
-      bucket : ""
+      bucket : "",
+      debug: false
     }) {
       
       // Set things up...
