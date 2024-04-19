@@ -16,7 +16,7 @@ const init = async () => {
           interceptOutbound: true,
           host : "",
           token : "",
-          bucket : "",
+          bucket : "k1ahxzru7d6z",
           debug: true
         }
       });
@@ -44,6 +44,18 @@ const init = async () => {
           
       }
   });
+
+  server.route({
+    method: 'POST',
+    path: '/',
+    handler: async (request, h) => {
+
+        // once the call is complete, build the response...
+        return { message: 'Hello, world!' };
+  
+        
+    }
+});
 
     await server.start();
     console.log('Server running on %s', server.info.uri);
