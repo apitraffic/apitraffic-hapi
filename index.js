@@ -2,6 +2,7 @@
 const utilities = require('@apitraffic/utilities');
 const package = require('./package.json');
 
+
 exports.plugin = {
     name: 'apiTrafficPlugin',
     register: function (server, options = {
@@ -12,12 +13,13 @@ exports.plugin = {
       debug: false
     }) {
       
+
+
       // Set things up...
       utilities.setup(options);
 
       server.ext('onRequest', (request, h) => {
-        request.plugins.requestReceivedAt = new Date().toISOString();
-        request.plugins.requestStartTime = process.hrtime();
+        request.ApiTraffic = new utilities.RequestManager();
         return h.continue;
       });     
   
@@ -37,20 +39,21 @@ exports.plugin = {
         // TODO: Account for other body types other than JSON...
         const apiTrafficPayload = {
             request: {
-                received: request.plugins.requestReceivedAt,
+                received: request.ApiTraffic.requestReceivedAt,
                 ip : request.info.remoteAddress,
                 url : fullUrl,
                 method: request.method.toUpperCase(),
                 headers : request.headers,
-                body : JSON.stringify(request.payload) || null
+                body : request.payload || null
             },
             response : {
                 headers : request.response.headers, 
                 status : request.response.statusCode,
-                responseTime : utilities.getDuration(request.plugins.requestStartTime),
-                size: request.response.headers['content-length'],
-                body : JSON.stringify(request.response.source)
-            }
+                responseTime : utilities.getDuration(request.ApiTraffic.requestStartTime),
+                body : request.response?.source || null
+            },
+            tags : request.ApiTraffic.getTagArray(),
+            traces : request.ApiTraffic.getTraces()
         };
         // call the function to log all now...
         // we will not await the response b/c we want to fire and forget...
