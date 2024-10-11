@@ -1,11 +1,10 @@
-const apiTraffic = require('..');
+const apiTraffic = require('@apitraffic/hapi');
 const axios = require('axios');
-
 const Hapi = require('@hapi/hapi');
 
 const init = async () => {
     const server = Hapi.server({
-        port: 3000,
+        port: process.env.port || 3000,
         host: 'localhost'
     });
 
@@ -13,11 +12,8 @@ const init = async () => {
     await server.register({
         plugin: apiTraffic,
         options: {
-          interceptOutbound: true,
-          host : "",
           token : "",
-          bucket : "k1ahxzru7d6z",
-          debug: true
+          bucket : ""
         }
       });
 
@@ -30,9 +26,16 @@ const init = async () => {
       handler: async (request, h) => {
 
         try{
-            // Await the response of the fetch call
-          const response = await axios.get('https://www.boredapi.com/api/activity/')
           
+          // Await the response of an outbound call...
+          const response = await axios.get('https://thetestrequest.com/authors')
+          
+          // tag the request. You can add as many tags to a request as required.
+          apiTraffic.getRequestManager().tag("accountSid", "12345");
+
+          // add some tracing information to the request. You can add as many traces as required, think of it like console log.
+          apiTraffic.getRequestManager().trace("This is a sample trace from the sample ApiTraffic app.");
+
           // once the call is complete, build the response...
           return { message: 'Hello, world!' };
     
@@ -45,20 +48,9 @@ const init = async () => {
       }
   });
 
-  server.route({
-    method: 'POST',
-    path: '/',
-    handler: async (request, h) => {
+  await server.start();
+  console.log('Server running on %s', server.info.uri);
 
-        // once the call is complete, build the response...
-        return { message: 'Hello, world!' };
-  
-        
-    }
-});
-
-    await server.start();
-    console.log('Server running on %s', server.info.uri);
 };
 
 process.on('unhandledRejection', (err) => {
