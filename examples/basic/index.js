@@ -4,7 +4,7 @@ const Hapi = require('@hapi/hapi');
 
 const init = async () => {
     const server = Hapi.server({
-        port: process.env.port || 3000,
+        port: process.env.PORT || 3000,
         host: 'localhost'
     });
 
@@ -28,8 +28,8 @@ const init = async () => {
         try{
           
           // Await the response of an outbound call...
-          const response = await axios.get('https://thetestrequest.com/authors')
-          
+          const response = await axios.get('https://thetestrequest.com/authors');
+                    
           // tag the request. You can add as many tags to a request as required.
           apiTraffic.getRequestManager().tag("accountSid", "12345");
 
