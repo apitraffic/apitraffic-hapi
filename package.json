@@ -9,7 +9,7 @@
     "pub-major": "npm version major --force && git push origin master &&  npm publish"
   },
   "dependencies": {
-    "@apitraffic/utilities": "^1.0.8"
+    "@apitraffic/utilities": "^1.0.9"
   },
   "devDependencies": {
     "axios": "^1.6.8"
