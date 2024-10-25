@@ -17,8 +17,6 @@ const init = async () => {
         }
       });
 
-    // Define your routes and additional server setup here
-
     // Define a route for demonstration
     server.route({
       method: 'GET',
@@ -37,7 +35,7 @@ const init = async () => {
           apiTraffic.getRequestManager().trace("This is a sample trace from the sample ApiTraffic app.");
 
           // once the call is complete, build the response...
-          return { message: 'Hello, world!' };
+          return { message: 'Hello, world!', phone: '555-555-1212' };
     
         } catch (error) {
             // Handle any errors that occur during the fetch
