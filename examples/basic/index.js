@@ -13,7 +13,8 @@ const init = async () => {
         plugin: apiTraffic,
         options: {
           token : "",
-          bucket : ""
+          bucket : "",
+          debug: true
         }
       });
 
