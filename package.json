@@ -1,6 +1,6 @@
 {
   "name": "@apitraffic/hapi",
-  "version": "1.0.2",
+  "version": "1.1.1",
   "description": "Hapi plugin for sending request data to ApiTraffic.",
   "main": "index.js",
   "scripts": {
