@@ -3,25 +3,25 @@
     "version": "0.0.1",
     "description": "",
     "main": "index.js",
-    "scripts" : {
-        "start" : "node index.js"
+    "scripts": {
+        "start": "node index.js"
     },
     "dependencies": {
-      "@apitraffic/hapi": "file:../../",
-      "axios": "^1.6.8",
-      "express": "^4.18.2",
-      "body-parser": "^1.20.2",
-      "@hapi/hapi": "^21.3.8"
+        "@apitraffic/hapi": "latest",
+        "@hapi/hapi": "^21.3.8",
+        "axios": "^1.6.8",
+        "body-parser": "^1.20.2",
+        "express": "^4.18.2",
+        "pako": "^2.1.0"
     },
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/apitraffic/apitraffic-hapi.git"
+        "type": "git",
+        "url": "git+https://github.com/apitraffic/apitraffic-hapi.git"
     },
     "author": "ApiTraffic.io <sdk@apitraffic.io>",
     "license": "MIT",
     "bugs": {
-      "url": "https://github.com/apitraffic/apitraffic-hapi/issues"
+        "url": "https://github.com/apitraffic/apitraffic-hapi/issues"
     },
     "homepage": "https://github.com/apitraffic/apitraffic-hapi#readme"
-  }
-  
+}

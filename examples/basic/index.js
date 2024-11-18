@@ -4,7 +4,7 @@ const Hapi = require('@hapi/hapi');
 
 const init = async () => {
     const server = Hapi.server({
-        port: process.env.PORT || 3000,
+        port: process.env.PORT || 4000,
         host: 'localhost'
     });
 
@@ -12,31 +12,44 @@ const init = async () => {
     await server.register({
         plugin: apiTraffic,
         options: {
+          host:"",
           token : "",
           bucket : "",
-          debug: true
+          debug: false
         }
       });
+    
+      server.route({
+        method: 'GET',
+        path: '/',
+        handler: async (request, h) => {     
+            return { message: 'Hello World!' };
+        }
+    });
+
 
     // Define a route for demonstration
     server.route({
       method: 'GET',
-      path: '/',
+      path: '/authors',
       handler: async (request, h) => {
 
         try{
           
-          // Await the response of an outbound call...
-          const response = await axios.get('https://thetestrequest.com/authors');
-                    
-          // tag the request. You can add as many tags to a request as required.
-          apiTraffic.getRequestManager().tag("accountSid", "12345");
-
           // add some tracing information to the request. You can add as many traces as required, think of it like console log.
-          apiTraffic.getRequestManager().trace("This is a sample trace from the sample ApiTraffic app.");
+          apiTraffic.trace("This is a sample trace from the sample ApiTraffic app.");
+
+          // Await the response of the fetch call
+          const response = await axios.get('https://thetestrequest.com/authors');
+          
+          // tag the request. You can add as many tags to a request as required.
+          apiTraffic.tag("Account Id", "12345");
+
+          // added a bit more tracing to show what can be done.
+          apiTraffic.trace(`${response.data.length} authors were found.`);
 
           // once the call is complete, build the response...
-          return { message: 'Hello, world!', phone: '555-555-1212' };
+          return response.data;
     
         } catch (error) {
             // Handle any errors that occur during the fetch

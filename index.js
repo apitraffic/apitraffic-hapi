@@ -10,6 +10,14 @@ exports.getRequestManager = function(){
   return utilities.context.getStore().RequestManager;
 }
 
+exports.tag = function(key, value){
+  utilities.context.getStore().RequestManager.tag(key, value);
+}
+
+exports.trace = function(content){
+  utilities.context.getStore().RequestManager.trace(content);
+}
+
 exports.plugin = {
     name: 'apiTrafficPlugin',
     register: function (server, options = {

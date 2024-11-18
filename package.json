@@ -1,7 +1,7 @@
 {
   "name": "@apitraffic/hapi",
-  "version": "1.0.12",
-  "description": "",
+  "version": "1.0.0",
+  "description": "Hapi plugin for sending request data to ApiTraffic.",
   "main": "index.js",
   "scripts": {
     "pub-patch": "npm version patch --force && git push origin master &&  npm publish",
@@ -9,7 +9,7 @@
     "pub-major": "npm version major --force && git push origin master &&  npm publish"
   },
   "dependencies": {
-    "@apitraffic/utilities": "1.0.13"
+    "@apitraffic/utilities": "^1.0.13"
   },
   "devDependencies": {
     "axios": "^1.6.8"
